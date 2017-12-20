@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/21/iOS面试题总结/index.html">
 <meta property="og:site_name" content="一花一世界">
 <meta property="og:description" content="为什么说Objective-C是一门动态的语言   因为在OC中，对于数据类型（数据类型包括类和数据变量）的确认并不是在编译器，而是在运行期。在OC的底层实现里面，使用到了Runtime运行时系统，这是一个C语言的库，OC在编译期的时候，将OC的消息转换成C语言的函数，并且在运行期的时候，可以动态的创建新类，在类里面添加方法，实例变量，属性等等。所以说OC是一门动态语言。    讲一下MVC和M">
-<meta property="og:updated_time" content="2017-12-20T17:21:08.000Z">
+<meta property="og:updated_time" content="2017-12-20T17:29:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018iOS面试题总结">
 <meta name="twitter:description" content="为什么说Objective-C是一门动态的语言   因为在OC中，对于数据类型（数据类型包括类和数据变量）的确认并不是在编译器，而是在运行期。在OC的底层实现里面，使用到了Runtime运行时系统，这是一个C语言的库，OC在编译期的时候，将OC的消息转换成C语言的函数，并且在运行期的时候，可以动态的创建新类，在类里面添加方法，实例变量，属性等等。所以说OC是一门动态语言。    讲一下MVC和M">
@@ -213,7 +213,11 @@
 <li>synthesize关键字的意思是编译器自动生成setter和getter方法，并可以指定与属性相对应的成员变量。</li>
 </ul>
 </li>
-<li><p>NSString为什么要用copy关键字，如果用strong会有什么问题？<br>因为NSString有对应的NSMutableString类型，并且NSString 类型的指针可以指向NSMutableString类型。因为copy关键字，返回的类型都是不可变对象。所以，使用关键字，可以保证NSString类型都会变成不可修改的。</p>
+<li><p>NSString为什么要用copy关键字，如果用strong会有什么问题？<br>因为NSString有对应的NSMutableString类型，并且NSString 类型的指针可以指向NSMutableString类型。因为copy关键字，返回的类型都是不可变对象。所以，使用关键字，可以保证NSString类型都会变成不可修改的。<br>如果使用strong关键字，只是指针赋值，栈中的对象的引用计数加一，如果把一个可变字符串赋值给NSString,NSString就会变成可变类型。</p>
+<ul>
+<li>如何令自己所写的对象具有拷贝功能?<br>如果想实现不可变的拷贝，需要遵守NSCopying协议，如果可变和不可变都想实现，需要同时遵守NSCopying和NSMutableCopying协议。并且实现</li>
+</ul>
+<p><code>- (id)copyWithZone:(NSZone *)zone;</code></p>
 </li>
 </ul>
 

@@ -211,7 +211,11 @@
 <li>synthesize关键字的意思是编译器自动生成setter和getter方法，并可以指定与属性相对应的成员变量。</li>
 </ul>
 </li>
-<li><p>NSString为什么要用copy关键字，如果用strong会有什么问题？<br>因为NSString有对应的NSMutableString类型，并且NSString 类型的指针可以指向NSMutableString类型。因为copy关键字，返回的类型都是不可变对象。所以，使用关键字，可以保证NSString类型都会变成不可修改的。</p>
+<li><p>NSString为什么要用copy关键字，如果用strong会有什么问题？<br>因为NSString有对应的NSMutableString类型，并且NSString 类型的指针可以指向NSMutableString类型。因为copy关键字，返回的类型都是不可变对象。所以，使用关键字，可以保证NSString类型都会变成不可修改的。<br>如果使用strong关键字，只是指针赋值，栈中的对象的引用计数加一，如果把一个可变字符串赋值给NSString,NSString就会变成可变类型。</p>
+<ul>
+<li>如何令自己所写的对象具有拷贝功能?<br>如果想实现不可变的拷贝，需要遵守NSCopying协议，如果可变和不可变都想实现，需要同时遵守NSCopying和NSMutableCopying协议。并且实现</li>
+</ul>
+<p><code>- (id)copyWithZone:(NSZone *)zone;</code></p>
 </li>
 </ul>
 
