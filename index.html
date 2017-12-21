@@ -237,22 +237,23 @@
 <p> 例子：</p>
 </li>
 <li><p>UICollectionView自定义layout如何实现？<br>实现一个自定义的layout，需要继承UICollectionViewLayout类，然后重载下列方法：<br><code>-(CGSize)collectionViewContentSize
-  //返回collectionView的内容的尺寸
--(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-  //返回rect中的所有的元素的布局属性
-返回的是包含UICollectionViewLayoutAttributes的NSArray
-UICollectionViewLayoutAttributes可以是cell，追加视图或装饰视    图的信息，通过不同的UICollectionViewLayoutAttributes初始化方法可以得到不同类型的UICollectionViewLayoutAttributes：
- layoutAttributesForCellWithIndexPath:
- layoutAttributesForSupplementaryViewOfKind:withIndexPath:
-layoutAttributesForDecorationViewOfKind:withIndexPath:
--(UICollectionViewLayoutAttributes )layoutAttributesForItemAtIndexPath:(NSIndexPath )indexPath
-  //返回对应于indexPath的位置的cell的布局属性
--(UICollectionViewLayoutAttributes )layoutAttributesForSupplementaryViewOfKind:(NSString )kind atIndexPath:(NSIndexPath *)indexPath
-  //返回对应于indexPath的位置的追加视图的布局属性，如果没有追加视图可不重载
--(UICollectionViewLayoutAttributes * )layoutAttributesForDecorationViewOfKind:(NSString)decorationViewKind atIndexPath:(NSIndexPath )indexPath
-  //返回对应于indexPath的位置的装饰视图的布局属性，如果没有装饰视图可不重载
--(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-  //当边界发生改变时，是否应该刷新布局。如果YES则在边界变化（一般是scroll到其他地方）时，将重新计算需要的布局信息。</code></p>
+//返回collectionView的内容的尺寸</code><br><code>-(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+//返回rect中的所有的元素的布局属性</code></p>
+<ul>
+<li><p>用StoryBoard开发界面有什么弊端？如何避免？</p>
+<p> 简单的逻辑页面的跳转可以使用sb,开发比较快。但是复杂的页面不适合用sb开发，并且不适合多人开发；不利于后期版本维护和更新。使用sb在项目编译的时候会加载到内存中，造成内存浪费。<br> 可以使用xib来代替，编写复杂页面逻辑的时候，可以采用纯代码编写。</p>
+</li>
+</ul>
+</li>
+<li><p>进程和线程的区别？同步和异步的区别，并行和并发的区别？</p>
+<p>进程： 一个APP，一个应用软件的开启，就是一个进程。进程是系统进行资源分配和调度的一个独立单位。</p>
+<p>线程：线程是CPU调度和分派的基本单位，是比进程更小的独立运行的基本单位。</p>
+<p>同步：阻塞当前线程操作，不能开辟线程。<br>异步：不阻碍当前线程，开辟新的线程来执行任务。</p>
+<p>并行：多个cpu，多个线程<br>并发： 一个cpu,多个线程    </p>
+<ul>
+<li>线程间通信<br>拿GCD来说，当使用dispatch_async函数开辟线程执行任务完成时，需要使用dispatch_async(dispatch_get_main_queue(),^{})函数来刷新UI，并完成通信。</li>
+<li>GCD的一些常用的函数？（group，barrier，信号量，线程同步）</li>
+</ul>
 </li>
 </ul>
 
