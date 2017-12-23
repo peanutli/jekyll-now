@@ -250,12 +250,20 @@
 <p>线程：线程是CPU调度和分派的基本单位，是比进程更小的独立运行的基本单位。</p>
 <p>同步：阻塞当前线程操作，不能开辟线程。<br>异步：不阻碍当前线程，开辟新的线程来执行任务。</p>
 <p>并行：多个cpu，多个线程<br>并发： 一个cpu,多个线程    </p>
-<ul>
-<li>线程间通信<br>拿GCD来说，当使用dispatch_async函数开辟线程执行任务完成时，需要使用dispatch_async(dispatch_get_main_queue(),^{})函数来刷新UI，并完成通信。</li>
-<li>GCD的一些常用的函数？（group，barrier，信号量，线程同步）</li>
-</ul>
+</li>
+<li><p>线程间通信<br>拿GCD来说，当使用dispatch_async函数开辟线程执行任务完成时，需要使用dispatch_async(dispatch_get_main_queue(),^{})函数来刷新UI，并完成通信。</p>
+</li>
+<li><p>GCD的一些常用的函数？（group，barrier，信号量，线程同步）<br>同步，异步，串行，并行。<br>同步函数是dispatch_sync,异步函数是dispatch_async.<br>同步函数和异步函数可以把block任务放在串行队列或者并行队列之中。</p>
+<p>group函数，举个例子，下载多张小图，最后合成一张大图。因为下载小图需要开启多个线程，需要所有的线程执行完毕之后，在进行合成，用group就是可以在多个线程执行得到通知。</p>
+<p>barrier 栅栏函数，在一组异步形成里面，添加栅栏函数，只有栅栏函数前面的函数执行完毕之后，才能在执行栅栏函数后面的异步线程。</p>
+<p>信号量：这个比较难不好说。</p>
+</li>
+<li>如何使用队列来避免资源抢夺？<br>  使用队列来避免资源抢夺： 可以使用串行队列来避免资源抢夺，也可以使用并行队列来避免资源抢夺。</li>
+<li><p>数据持久化的几个方案（fmdb用没用过）</p>
+<p>持久化方案：<br>plist,存储字典，数组<br>preference:偏好设置，实质也是plist<br>NSKeyedArchiver:归档，可以存储对象。<br>sqlite:数据库，经常使用FMDB<br>coreData:苹果官方提供的数据库存储<br>*说一下appdelegate的几个方法？从后台到前台调用了哪些方法？第一次启动调用了哪些方法？从前台到后台调用了哪些方法？</p>
 </li>
 </ul>
+<p><img src="public/img/iOS-1.jpg" alt=""> </p>
 
       
 
